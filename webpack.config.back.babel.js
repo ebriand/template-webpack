@@ -9,8 +9,6 @@ const nodeModules =
         .map((dependency) =>  {  return [dependency, 'commonjs ' + dependency]; })
         .fromPairs()
         .value();
-
-nodeModules['config'] = 'commonjs ' + './config';
 export default 
     {
         entry: path.resolve(__dirname, 'src/server/server.js'),
