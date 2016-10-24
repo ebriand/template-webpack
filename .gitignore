@@ -2,3 +2,4 @@ node_modules
 *.log
 dist/
 jsconfig.json
+.DS_Store
