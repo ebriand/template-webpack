@@ -1,11 +1,12 @@
-'use strict';
+import inert from 'inert';
+import good from 'good';
 
-module.exports = [
+export default [
     {
-        register: require('inert')
-    }, 
+        register: inert
+    },
     {
-        register: require('good'),
+        register: good,
         options: {
             ops: {
                 interval: 1000
@@ -18,7 +19,7 @@ module.exports = [
                         log: '*',
                         response: '*'
                     }]
-                }, 
+                },
                 {
                     module: 'good-console'
                 }, 'stdout']

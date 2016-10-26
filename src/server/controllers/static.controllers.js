@@ -1,8 +1,6 @@
-'use strict';
-
 const publicPath = './public';
 
-module.exports = {
+export default {
     assets: {
         handler: {
             directory: { path: publicPath }

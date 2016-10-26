@@ -2,10 +2,11 @@ import webpack from 'webpack';
 import path from 'path';
 import _ from 'lodash';
 import fileUrl from 'file-url';
+import packageJson from './package.json'
 
 // Make every dependency as external lib to load with commonjs
-const nodeModules = 
-    _(require('./package.json').dependencies)
+const nodeModules =
+    _(packageJson.dependencies)
         .keys()
         .map((dependency) =>  {  return [dependency, 'commonjs ' + dependency]; })
         .fromPairs()
@@ -15,7 +16,7 @@ function getFilenameTemplate(resourcePath, absoluteResourcePath) {
     return (process.env.NODE_ENV === 'production') ? resourcePath : fileUrl(absoluteResourcePath);
 }
 
-export default 
+export default
     {
         entry: path.resolve(__dirname, 'src/server/server.js'),
         target: 'node',

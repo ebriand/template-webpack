@@ -1,10 +1,8 @@
-'use strict';
+import _  from 'lodash';
+import staticRoutes from './static.routes';
+import dummyRoutes from './dummy.routes';
 
-const _ = require('lodash');
-const staticRoutes = require('./static.routes');
-const dummyRoutes = require('./dummy.routes');
-
-module.exports = function() {
+export default () =>  {
     const routers = [staticRoutes, dummyRoutes];
     return _(routers).flatten().value();
 };

@@ -1,8 +1,6 @@
-'use strict';
+import controller from '../controllers/static.controllers';
 
-const controller = require('../controllers/static.controllers');
-
-module.exports = [
+export default [
     {
         method: 'GET',
         path: '/public/{path*}',

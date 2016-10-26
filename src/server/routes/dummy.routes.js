@@ -1,8 +1,6 @@
-'use strict';
+import controller from '../controllers/dummy.controllers';
 
-const controller = require('../controllers/dummy.controllers');
-
-module.exports = [
+export default [
     {
         method: 'GET',
         path: '/api/hello',

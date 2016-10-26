@@ -1,8 +1,6 @@
-'use strict';
-
-const Hapi = require('hapi');
-const plugins = require('./config/plugins');
-const routes = require('./routes')();
+import Hapi from 'hapi';
+import plugins from './config/plugins';
+import routes from './routes';
 
 const server = new Hapi.Server();
 server.connection({
@@ -14,7 +12,7 @@ server.register(plugins,
     (err) => {
         if (err) throw err;
 
-        server.route(routes);
+        server.route(routes());
     }
 );
 
