@@ -2,13 +2,17 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Attach to Process",
+            "name": "Attacher",
             "type": "node",
             "request": "attach",
-            "processId": "${command.PickProcess}",
             "port": 5858,
+            "address": "localhost",
+            "restart": false,
             "sourceMaps": true,
-            "outDir": "${workspaceRoot}/dist/server"
+            "outDir": "${workspaceRoot}/dist/server",
+            "localRoot": "${workspaceRoot}",
+            "remoteRoot": null
         }
+
     ]
 }

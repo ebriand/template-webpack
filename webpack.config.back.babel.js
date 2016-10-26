@@ -12,7 +12,7 @@ const nodeModules =
         .value();
 
 function getFilenameTemplate(resourcePath, absoluteResourcePath) {
-    return (process.env.NODE_ENV === 'production') ? resourcePath : absoluteResourcePath;
+    return (process.env.NODE_ENV === 'production') ? resourcePath : fileUrl(absoluteResourcePath);
 }
 
 export default 
