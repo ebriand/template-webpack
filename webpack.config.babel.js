@@ -13,6 +13,5 @@ function getConfig() {
       require('./webpack/webpack.config.front.dev.babel').default
     break;
   }
-  console.log(config);
   return config;
 }
