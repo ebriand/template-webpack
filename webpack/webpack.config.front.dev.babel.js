@@ -2,11 +2,13 @@ import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import path from 'path';
 
+const projectRoot = path.join(__dirname, '..');
+
 export default
     {
-        entry: path.resolve(__dirname, 'src/public/app/app.js'),
+        entry: path.resolve(projectRoot, 'src/public/app/app.js'),
         output: {
-            path: path.join(__dirname, 'dist/public'),
+            path: path.join(projectRoot, 'dist/public'),
             publicPath: 'http://localhost:8080/',
             filename: '[name].bundle.js'
         },
@@ -35,7 +37,7 @@ export default
         module: {
             loaders: [
                 { test: /index.html$/, loader: 'html-loader' },
-                { test: /\.html$/, loader: 'ngtemplate-loader?relativeTo=' + (path.resolve(__dirname, './src/public/')) + '/!html', exclude: /index.html$/ },
+                { test: /\.html$/, loader: 'ngtemplate-loader?relativeTo=' + (path.resolve(projectRoot, './src/public/')) + '/!html', exclude: /index.html$/ },
                 { test: /\.css$/, loader: 'style-loader!css-loader' },
                 { test: /\.js$/, loaders: ['babel-loader', 'eslint-loader'], exclude: [/node_modules/, /webpack-dev-server.js$/] },
 

@@ -1,16 +1,9 @@
 import webpack from 'webpack';
+import nodeExternals from 'webpack-node-externals';
 import path from 'path';
-import _ from 'lodash';
 import fileUrl from 'file-url';
-import packageJson from './package.json'
 
-// Make every dependency as external lib to load with commonjs
-const nodeModules =
-    _(packageJson.dependencies)
-        .keys()
-        .map((dependency) =>  {  return [dependency, 'commonjs ' + dependency]; })
-        .fromPairs()
-        .value();
+const projectRoot = path.join(__dirname, '..');
 
 function getFilenameTemplate(resourcePath, absoluteResourcePath) {
     return (process.env.NODE_ENV === 'production') ? resourcePath : fileUrl(absoluteResourcePath);
@@ -18,14 +11,14 @@ function getFilenameTemplate(resourcePath, absoluteResourcePath) {
 
 export default
     {
-        entry: path.resolve(__dirname, 'src/server/server.js'),
+        entry: path.resolve(projectRoot, 'src/server/server.js'),
         target: 'node',
         output: {
-            path: path.join(__dirname, 'dist/server'),
+            path: path.join(projectRoot, 'dist/server'),
             filename: 'server.js',
             devtoolModuleFilenameTemplate: ({resourcePath, absoluteResourcePath}) => getFilenameTemplate(resourcePath, absoluteResourcePath)
         },
-        externals: nodeModules,
+        externals: nodeExternals(),
         plugins: [
             new webpack.BannerPlugin('require("source-map-support").install();',
                 { raw: true, entryOnly: false })

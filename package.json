@@ -50,14 +50,15 @@
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.2",
-    "webpack-dev-server": "^1.14.1"
+    "webpack-dev-server": "^1.14.1",
+    "webpack-node-externals": "^1.5.4"
   },
   "scripts": {
     "test": "cross-env NODE_ENV=test echo \"Error: no test specified\" && exit 1",
-    "start": "cross-env NODE_ENV=dev concurrently \"npm run start:back\" \"npm run start:front\"",
-    "start:back": "nodemon --watch \"src/server/**/*.js\" --exec \"webpack --colors --debug --config webpack.config.back.babel.js && node --debug dist/server/server.js\"",
-    "start:front": "webpack-dev-server -d --inline --config webpack.config.front.dev.babel.js",
-    "build": "cross-env NODE_ENV=production webpack --config webpack.config.prod.babel.js --progress --display-error-details",
+    "start": "concurrently \"npm run start:back\" \"npm run start:front\"",
+    "start:back": "cross-env COMPONENT=back nodemon --watch \"src/server/**/*.js\" --exec \"webpack --colors --debug && node --debug dist/server/server.js\"",
+    "start:front": "webpack-dev-server -d --inline",
+    "build": "cross-env NODE_ENV=production webpack --progress --display-error-details",
     "clean": "rimraf dist",
     "prestart": "npm run clean",
     "prebuild": "npm run clean"
