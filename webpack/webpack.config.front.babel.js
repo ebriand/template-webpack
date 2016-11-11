@@ -26,6 +26,9 @@ function devServer() {
     stats: { colors: true },
     'history-api-fallback': true,
     progress: true,
+    host: '0.0.0.0',
+    inline: true,
+    watchOptions: { poll: true },
     proxy: {
       '/api/**': { target: `http://localhost:${backendPort}` }
     }

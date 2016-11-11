@@ -57,7 +57,7 @@
     "test": "cross-env NODE_ENV=test echo \"Error: no test specified\" && exit 1",
     "start": "concurrently \"npm run start:back\" \"npm run start:front\"",
     "start:back": "cross-env COMPONENT=back nodemon --watch \"src/server/**/*.js\" --exec \"webpack --colors --debug && node --debug dist/server/server.js\"",
-    "start:front": "webpack-dev-server -d --inline",
+    "start:front": "webpack-dev-server",
     "build": "cross-env NODE_ENV=production webpack --progress --display-error-details",
     "clean": "rimraf dist",
     "prestart": "npm run clean",
