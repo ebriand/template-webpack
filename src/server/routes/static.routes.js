@@ -1,14 +1,14 @@
-import controller from '../controllers/static.controllers';
+import { assets, index } from '../controllers/static.controllers';
 
 export default [
     {
         method: 'GET',
         path: '/public/{path*}',
-        config: controller.assets
+        config: assets
     },
     {
         method: 'GET',
         path: '/',
-        config: controller.index
+        config: index
     }
 ];

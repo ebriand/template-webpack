@@ -2,6 +2,7 @@ import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import path from 'path';
 
+const { ProvidePlugin, NoErrorsPlugin, EnvironmentPlugin, optimize: { DedupePlugin, OccurrenceOrderPlugin, UglifyJsPlugin } } = webpack;
 const backendPort = process.env.PORT || 9000;
 const prod = (process.env.NODE_ENV === 'production');
 const projectRoot = path.join(__dirname, '..');
@@ -9,13 +10,13 @@ const projectRoot = path.join(__dirname, '..');
 function getPlugins() {
   let plugins = [];
   if (prod) {
-    plugins.push(new webpack.NoErrorsPlugin());
-    plugins.push(new webpack.optimize.DedupePlugin());
-    plugins.push(new webpack.optimize.OccurrenceOrderPlugin());
-    plugins.push(new webpack.optimize.UglifyJsPlugin({compress: {warnings: false}}));
-    plugins.push(new webpack.EnvironmentPlugin(['NODE_ENV']));
+    plugins.push(new NoErrorsPlugin());
+    plugins.push(new DedupePlugin());
+    plugins.push(new OccurrenceOrderPlugin());
+    plugins.push(new UglifyJsPlugin({compress: {warnings: false}}));
+    plugins.push(new EnvironmentPlugin(['NODE_ENV']));
   }
-  plugins.push(new webpack.ProvidePlugin({ jQuery: 'jquery', $: 'jquery', 'window.jQuery': 'jquery', _: 'lodash'}));
+  plugins.push(new ProvidePlugin({ jQuery: 'jquery', $: 'jquery', 'window.jQuery': 'jquery', _: 'lodash'}));
   plugins.push(new HtmlWebpackPlugin({ template: 'src/public/index.html', inject: 'body'}));
   return plugins;
 }

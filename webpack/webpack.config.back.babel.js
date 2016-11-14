@@ -1,12 +1,13 @@
-import webpack from 'webpack';
+import { BannerPlugin } from 'webpack';
 import nodeExternals from 'webpack-node-externals';
 import path from 'path';
 import fileUrl from 'file-url';
 
+const prod = (process.env.NODE_ENV === 'production');
 const projectRoot = path.join(__dirname, '..');
 
 function getFilenameTemplate (resourcePath, absoluteResourcePath) {
-  if ((process.env.NODE_ENV === 'production') || !resourcePath.startsWith('./src')) {
+  if (prod || !resourcePath.startsWith('./src')) {
     return resourcePath;
   }
   return fileUrl(absoluteResourcePath);
@@ -22,7 +23,7 @@ export default {
   },
   externals: nodeExternals(),
   plugins: [
-    new webpack.BannerPlugin('require("source-map-support").install();',
+    new BannerPlugin('require("source-map-support").install();',
       { raw: true, entryOnly: false })
   ],
   devtool: 'source-map',

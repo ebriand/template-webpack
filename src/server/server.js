@@ -1,8 +1,8 @@
-import Hapi from 'hapi';
+import { Server } from 'hapi';
 import plugins from './config/plugins';
 import routes from './routes';
 
-const server = new Hapi.Server();
+const server = new Server();
 server.connection({
     host: '0.0.0.0',
     port: process.env.PORT || 9000

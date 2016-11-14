@@ -1,9 +1,9 @@
-import controller from '../controllers/dummy.controllers';
+import { hello } from '../controllers/dummy.controllers';
 
 export default [
     {
         method: 'GET',
         path: '/api/hello',
-        config: controller.hello
+        config: hello
     }
 ];

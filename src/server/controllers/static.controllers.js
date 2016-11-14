@@ -1,14 +1,13 @@
 const publicPath = './public';
 
-export default {
-    assets: {
-        handler: {
-            directory: { path: publicPath }
-        }
-    },
-    index: {
-        handler: (request, reply) => {
-            reply.file(publicPath + '/index.html');
-        }
+export const assets = {
+    handler: {
+        directory: { path: publicPath }
+    }
+};
+
+export const index = {
+    handler: (request, reply) => {
+        reply.file(publicPath + '/index.html');
     }
 };
