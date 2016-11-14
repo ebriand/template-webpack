@@ -1,16 +1,14 @@
 import dummyTemplate  from './dummy/dummy.html';
+import DummyController  from './dummy/dummy.controller.js';
 
 function sectionsRoutes($stateProvider, $urlRouterProvider) {
-    //
-    // For any unmatched url, redirect to /versions
     $urlRouterProvider.otherwise('/dummy');
-    //
-    // Now set up the states
+
     $stateProvider
         .state('dummy', {
             url: '/dummy',
             templateUrl: dummyTemplate,
-            controller: 'DummyController',
+            controller: DummyController.name,
             controllerAs: 'dummyCtrl'
         });
 }

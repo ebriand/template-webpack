@@ -2,5 +2,9 @@ import angular from 'angular';
 
 import DummyService from './dummy/dummy.service.js';
 
-angular.module('templateApp.core', [])
-    .service('DummyService', DummyService);
+const coreModuleName = 'templateApp.core';
+
+angular.module(coreModuleName, [])
+    .service(DummyService.name, DummyService);
+
+export default coreModuleName;

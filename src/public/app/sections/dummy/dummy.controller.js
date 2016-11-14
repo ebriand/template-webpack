@@ -1,3 +1,5 @@
+import DummyService from '../../core/dummy/dummy.service.js';
+
 class DummyController {
     constructor(DummyService) {
         DummyService.hello((message) => {
@@ -6,6 +8,6 @@ class DummyController {
     }
 }
 
-DummyController.$inject = ['DummyService'];
+DummyController.$inject = [DummyService.name];
 
 export default DummyController;

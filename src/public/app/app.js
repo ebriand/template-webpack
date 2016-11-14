@@ -4,11 +4,8 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'jquery';
 import 'bootstrap/dist/js/bootstrap.js';
 import angular from 'angular';
-import 'angular-i18n/angular-locale_fr-fr';
-import 'angular-sanitize';
-import 'angular-ui-bootstrap';
-import 'angular-toastr';
-import './core/core.module';
-import './sections/sections.module';
 
-angular.module('templateApp', ['templateApp.core', 'templateApp.sections', 'ui.bootstrap', 'ngSanitize']);
+import coreModule from './core/core.module';
+import sectionModule from './sections/sections.module';
+
+angular.module('templateApp', [coreModule, sectionModule]);
