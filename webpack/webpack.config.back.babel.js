@@ -29,7 +29,7 @@ export default {
   devtool: 'source-map',
   module: {
     loaders: [
-      { test: /\.js$/, loaders: ['babel-loader', 'eslint-loader'] }
+      { test: /\.js$/, loaders: ['babel', 'eslint'] }
     ]
   }
-}
+};

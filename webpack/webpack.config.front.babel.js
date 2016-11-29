@@ -8,7 +8,7 @@ const prod = (process.env.NODE_ENV === 'production');
 const projectRoot = path.join(__dirname, '..');
 
 function getPlugins() {
-  let plugins = [];
+  const plugins = [];
   if (prod) {
     plugins.push(new NoErrorsPlugin());
     plugins.push(new DedupePlugin());
@@ -48,15 +48,11 @@ export default {
   plugins: getPlugins(),
   module: {
     loaders: [
-      { test: /index.html$/, loader: 'html-loader' },
-      { test: /\.html$/, loader: 'ngtemplate-loader?relativeTo=' + (path.resolve(projectRoot, './src/public/')) + '/!html', exclude: /index.html$/ },
-      { test: /\.css$/, loader: 'style-loader!css-loader' },
-      { test: /\.js$/, loaders: ['babel-loader', 'eslint-loader'], exclude: [/node_modules/, /webpack-dev-server.js$/] },
-
-      { test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/, loader: 'url-loader?limit=10000&mimetype=application/font-woff' },
-      { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'url-loader?limit=10000&mimetype=application/octet-stream' },
-      { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file-loader' },
-      { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url-loader?limit=10000&mimetype=image/svg+xml' }
+      { test: /index.html$/, loader: 'html' },
+      { test: /\.html$/, loader: 'ngtemplate?relativeTo=' + (path.resolve(projectRoot, './src/public/')) + '/!html', exclude: /index.html$/ },
+      { test: /\.css$/, loader: 'style!css' },
+      { test: /\.js$/, loaders: ['babel', 'eslint'], exclude: [/node_modules/, /webpack-dev-server.js$/] },
+      { test: /\.(png|svg|gif|jpe?g|eot|woff|ttf|woff2|svg)$/i, loader: 'file' }
     ]
   }
-}
+};
