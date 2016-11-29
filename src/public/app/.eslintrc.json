@@ -1,6 +1,6 @@
 {
-    "extends": ["angular"],
-    "rules" : {
-        "angular/no-service-method": "off"
-    }
+  "extends": ["angular"],
+  "rules" : {
+     "angular/no-service-method": "off"
+  }
 }

@@ -3,6 +3,6 @@ import staticRoutes from './static.routes';
 import dummyRoutes from './dummy.routes';
 
 export default () =>  {
-    const routers = [staticRoutes, dummyRoutes];
-    return _(routers).flatten().value();
+  const routers = [staticRoutes, dummyRoutes];
+  return _(routers).flatten().value();
 };

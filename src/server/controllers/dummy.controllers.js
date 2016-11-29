@@ -1,5 +1,5 @@
 export const hello = {
-    handler: (req, reply) => {
-        reply('Hello World!');
-    }
+  handler: (req, reply) => {
+    reply('Hello World!');
+  }
 };

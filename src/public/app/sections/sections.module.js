@@ -7,7 +7,7 @@ import DummyController from './dummy/dummy.controller';
 const sectionsModuleName = 'templateApp.sections';
 
 angular.module(sectionsModuleName, ['ui.router'])
-    .config(sectionsRoutes)
-    .controller(DummyController.name, DummyController);
+  .config(sectionsRoutes)
+  .controller(DummyController.name, DummyController);
 
 export default sectionsModuleName;
