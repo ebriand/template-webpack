@@ -52,7 +52,7 @@ export default {
       { test: /\.html$/, loader: 'ngtemplate?relativeTo=' + (path.resolve(projectRoot, './src/public/')) + '/!html', exclude: /index.html$/ },
       { test: /\.css$/, loader: 'style!css' },
       { test: /\.js$/, loaders: ['babel', 'eslint'], exclude: [/node_modules/, /webpack-dev-server.js$/] },
-      { test: /\.(png|svg|gif|jpe?g|eot|woff|ttf|woff2|svg)$/i, loader: 'file' }
+      { test: /\.(png|svg|gif|jpe?g|eot|woff|ttf|woff2|svg)(\?v=\d+\.\d+\.\d+)?$/i, loader: 'file' }
     ]
   }
 };
